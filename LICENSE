@@ -1,0 +1,71 @@
+Copyright (c) 2026 Yutide. All rights reserved.
+
+Yutide（雨霆）软件许可条款 —— Yutide Software License Terms
+
+> 一句话：个人、学习、研究、评估与非营利使用免费；在公司或其他组织中商业性使用「协议解析功能」需取得商业授权，其余功能不受限制。
+> In one line: Free for personal, learning, research, evaluation and non-profit use. Using the protocol-parsing features in a company or other organisation requires a commercial licence; every other feature is unrestricted.
+
+---
+
+# 中文条款
+
+## 1. 专有软件
+本软件（含其源代码、二进制、资源与文档，以下称"本软件"）为**专有软件**（proprietary），**不是开源软件**。
+版权所有者：Yutide（雨霆）。保留所有权利。
+
+## 2. 免费使用范围（个人 / 学习 / 研究 / 评估 / 非营利）
+在下列情形下，你可以免费安装并使用本软件，**无需事先书面许可**：
+1. 个人使用；
+2. 学习、教学与学术研究；
+3. 为评估是否采购而进行的试用与评估；
+4. 非营利组织为本组织非营利目的使用。
+
+## 3. 商业使用
+1. 在公司、企业或其他组织中**商业性使用本软件的「协议解析功能」**（协议库、协议族解析、分帧与字段释义、规则导入/导出），需要事先取得**商业授权**。
+2. 除第 3.1 条所列「协议解析功能」外，本软件的**其余功能**（例如文件传输、下载、网络工具、媒体播放等）在上述商业环境中的使用**不受本条款限制**。
+3. 商业授权覆盖的是**本软件的协议解析能力**；**不包含**任何第三方规格书或客户规格书派生的协议定义本身。协议定义的来源与权利归属见随包分发的 `docs/PROTOCOL_PROVENANCE.md`。
+
+## 4. 限制
+未经版权所有者事先书面许可，任何个人或组织不得：
+1. 再分发、出租、出借、出售、转授权或以其他方式向第三方提供本软件（无论是否收费）；
+2. 更改产品名称、去除或替换品牌标识后分发本软件；
+3. 反向工程、反编译或反汇编本软件（法律明确允许的范围除外）；
+4. 移除或更改本软件中的任何版权、商标或其他权利声明。
+
+## 5. 担保与责任
+本软件按"现状"提供，不附带任何明示或默示的担保，包括但不限于对适销性、特定用途适用性及不侵权的担保。在任何情况下，版权所有者均不对因使用或无法使用本软件而产生的任何索赔、损害或其他责任承担责任。
+
+## 6. 第三方组件
+第三方组件按其各自的许可证分发，详见随包分发的 `THIRD_PARTY_NOTICES.md`。
+
+---
+
+# English Terms
+
+## 1. Proprietary software
+Yutide is **proprietary software** — it is **not** open source. Copyright holder: Yutide. All rights reserved.
+
+## 2. Free of charge for personal, learning, research, evaluation and non-profit use
+You may install and use the software free of charge, **without prior written permission**, for:
+1. personal use;
+2. learning, teaching and academic research;
+3. trial and evaluation to decide whether to purchase a licence;
+4. use by a non-profit organisation for its own non-profit purposes.
+
+## 3. Commercial use
+1. **Using the protocol-parsing features** of the software (protocol library, protocol families, framing and field interpretation, rule import/export) **in a company or other organisation requires a commercial licence**.
+2. **Every other feature** of the software (for example file transfer, downloads, network tools, media playback) is **unrestricted** in that commercial environment.
+3. A commercial licence covers **the software's parsing capability**; it does **not** cover protocol definitions derived from third-party or customer specifications. Their provenance and rights are described in `docs/PROTOCOL_PROVENANCE.md`, shipped with the app.
+
+## 4. Restrictions
+Without the prior written consent of the copyright holder, you may not:
+1. redistribute, rent, lend, sell, sublicense or otherwise make the software available to third parties (with or without a fee);
+2. rename the product or remove/replace the branding before distributing it;
+3. reverse engineer, decompile or disassemble the software, except to the extent expressly permitted by law;
+4. remove or alter any copyright, trademark or other rights notice in the software.
+
+## 5. Warranty and liability
+The software is provided "AS IS", without warranty of any kind, express or implied, including but not limited to merchantability, fitness for a particular purpose and non-infringement. In no event shall the copyright holder be liable for any claim, damages or other liability arising from the use of, or inability to use, the software.
+
+## 6. Third-party components
+Third-party components are distributed under their own licences; see `THIRD_PARTY_NOTICES.md`, shipped with the app.
