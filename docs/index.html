@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yutide — professional network toolbox, clean enough for every day</title>
+<meta name="description" content="Yutide: a professional network toolbox for engineers — protocol engine with 58 protocols and protocol families, transfer engine, downloads, and a one-click network checkup. Windows and WSL2 Ubuntu. Privacy by design: no telemetry, no third-party ad SDKs.">
+<!--
+  Landing page draft. Static, self-contained, zero dependencies (no CDN, no external fonts) —
+  consistent with the product's privacy stance and trivial to host on GitHub Pages.
+  TODO before publishing: replace the download hrefs (#) with the real Release asset URLs,
+  and add the real screenshots/GIFs where marked.
+-->
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel2:#1c2430; --line:#26303d;
+    --fg:#e6edf3; --muted:#9aa7b4; --accent:#4c9aff; --accent2:#3fb950; --warn:#d29922;
+    --radius:14px; --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  header{padding:56px 0 24px;border-bottom:1px solid var(--line)}
+  .logo{display:flex;align-items:center;gap:12px;font-weight:700;font-size:20px}
+  .logo .dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+  h1{font-size:40px;line-height:1.2;margin:28px 0 12px;letter-spacing:-.5px}
+  .sub{color:var(--muted);font-size:19px;max-width:760px}
+  .row{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 8px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:10px;
+    border:1px solid var(--line);background:var(--panel);color:var(--fg);font-weight:600;font-size:15px}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#06121f}
+  .btn small{font-weight:400;color:var(--muted)}
+  .btn.primary small{color:#0b2135}
+  .note{color:var(--muted);font-size:13px;margin-top:4px}
+  section{padding:44px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:24px;margin:0 0 18px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+  .card h3{margin:0 0 8px;font-size:17px}
+  .card p{margin:0;color:var(--muted);font-size:15px}
+  .card ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
+  .card li{margin:4px 0}
+  .k{color:var(--fg);font-weight:600}
+  table{width:100%;border-collapse:collapse;font-size:15px;background:var(--panel);
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--panel2);font-size:14px;color:var(--muted);font-weight:600}
+  tr:last-child td{border-bottom:none}
+  .yes{color:var(--accent2)} .no{color:#f85149} .partial{color:var(--warn)}
+  .strip{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+  .strip ul{margin:0;padding-left:18px}
+  .strip li{margin:6px 0}
+  .shot{border:1px dashed var(--line);border-radius:var(--radius);padding:36px 20px;text-align:center;
+    color:var(--muted);font-size:14px;background:var(--panel2)}
+  footer{padding:36px 0 60px;color:var(--muted);font-size:14px}
+  .pill{display:inline-block;padding:3px 9px;border:1px solid var(--line);border-radius:999px;
+    font-size:12px;color:var(--muted);margin-left:8px}
+  .zh{margin-top:10px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span> Yutide</div>
+    <h1>A professional network toolbox —<br>clean enough for every day.</h1>
+    <p class="sub">
+      A 58-protocol decoding engine with protocol families, packet capture, serial/MQTT and SSH/Telnet/ADB —
+      plus file transfer, downloads and a one-click network checkup. Windows and WSL2 Ubuntu.
+      <span class="pill">privacy by design</span>
+    </p>
+    <div class="row">
+      <a class="btn primary" href="#">Download for Windows <small>setup.exe</small></a>
+      <a class="btn" href="#">Download for WSL2 Ubuntu <small>.deb</small></a>
+      <a class="btn" href="#">Verify <small>SHA256SUMS</small></a>
+    </div>
+    <p class="note">Requires admin rights for packet capture on Windows. WSL2 build is intended as a debugging / server-side toolbox — see the capability matrix below.</p>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <h2>Three things we do better</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>1 · A protocol engine that cannot lie about its rules</h3>
+        <ul>
+          <li><span class="k">58 built-in protocols</span> across industrial, telecom, IoT and Internet families</li>
+          <li><span class="k">Protocol families:</span> pick <code>szl4</code> once and every message type of that protocol decodes — dispatched per member, each with its own framing rule</li>
+          <li><span class="k">Framing:</span> fixed length, length-prefixed (with explicit "does the length include itself / header / trailer" semantics) and terminator-delimited, plus a max-frame guard</li>
+          <li><span class="k">A fixture-verified gate:</span> every rule must prove it decodes exactly one whole frame, with no residue. Rules that can't prove themselves don't ship.</li>
+          <li><span class="k">Never silently drops data:</span> resynchronises after garbage, waits on half-frames, hands unrecognised frames to you verbatim</li>
+          <li><span class="k">Rules are files, not hard-coded logic</span> — with your own rules folder</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>2 · A transfer engine built for the awkward cases</h3>
+        <ul>
+          <li>Large files, transferred directly</li>
+          <li>Huge numbers of small files, aggregated</li>
+          <li>Interrupted transfers, resumed</li>
+          <li>Copies of detected media links go to whatever tool you prefer — we don't force ours</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>3 · One tool for host and WSL</h3>
+        <ul>
+          <li>The same app on Windows and inside WSL2 Ubuntu</li>
+          <li>Host-side and WSL-side debugging share one toolbox</li>
+          <li>We document exactly where the WSL experience differs — no surprises</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What's inside</h2>
+    <div class="grid">
+      <div class="card"><h3>Network tools</h3><p>TCP client/server, UDP, MQTT, serial; live protocol decoding; packet capture.</p></div>
+      <div class="card"><h3>Remote</h3><p>SSH, Telnet, ADB, FTP/SFTP with file transfer.</p></div>
+      <div class="card"><h3>Downloads</h3><p>HTTP, BitTorrent and magnet; resume; bounded retries; plain-language failure reasons.</p></div>
+      <div class="card"><h3>Device link</h3><p>Share, groups and messaging between devices.</p></div>
+      <div class="card"><h3>Media</h3><p>Local playback and a media centre.</p></div>
+      <div class="card"><h3>Browser &amp; recording</h3><p>Built-in browser with resource detection; screen recording with audio on Windows.</p></div>
+    </div>
+    <div class="shot" style="margin-top:16px">Screenshot / short GIF placeholder — capture at 1280×800 (dark UI), one per area above.</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Platform support</h2>
+    <table>
+      <thead><tr><th>Capability</th><th>Windows</th><th>WSL2 Ubuntu</th></tr></thead>
+      <tbody>
+        <tr><td>Core toolbox, transfer, downloads, protocol decoding</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+        <tr><td>Graphical interface</td><td class="yes">✅ native</td><td class="partial">requires WSLg (Windows 11)</td></tr>
+        <tr><td>Packet capture</td><td class="yes">✅ via Npcap — host/LAN traffic</td><td class="partial">⚠ only the WSL virtual NIC is visible</td></tr>
+        <tr><td>Serial ports</td><td class="yes">✅ COM ports</td><td class="partial">⚠ requires <code>usbipd-win</code></td></tr>
+        <tr><td>Screen recording audio</td><td class="yes">✅</td><td class="no">not available</td></tr>
+        <tr><td>Hardware video decoding</td><td class="yes">✅</td><td class="partial">depends on <code>/dev/dri</code>; falls back to software</td></tr>
+        <tr><td>Privileges</td><td class="partial">admin for capture</td><td class="partial">root / <code>cap_net_raw</code> for AF_PACKET</td></tr>
+      </tbody>
+    </table>
+    <p class="note">We publish this table on purpose: the Linux build is a debugging / server-side toolbox, not a 1:1 copy of the Windows experience.</p>
+  </div>
+</section>
+
+<section id="android">
+  <div class="wrap">
+    <h2>Android</h2>
+    <p class="sub" style="font-size:16px">
+      The cross-device experience — including a mobile companion — is <span class="k">in planning</span>.
+      There is <span class="k">no date to announce yet</span>, and no Android build is downloadable today;
+      follow the repository to hear when it lands.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Privacy</h2>
+    <div class="strip">
+      <ul>
+        <li><span class="k">No telemetry by default.</span></li>
+        <li><span class="k">No third-party advertising SDKs</span> — the in-app promotion slots are our own content.</li>
+        <li><span class="k">Diagnostics are off by default</span>, and when off they neither upload nor write anything.</li>
+        <li>Remote requests (ad manifest, update check) happen <span class="k">only if you configure them</span>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Responsible use</h2>
+    <p class="sub" style="font-size:16px">
+      Yutide is a general-purpose networking tool. <span class="k">Download only what you are entitled to download</span>
+      and comply with the terms of the sites you use and the laws that apply to you.
+    </p>
+    <div class="strip" style="margin-top:14px">
+      <ul>
+        <li>We do <span class="k">not</span> circumvent DRM or technical protection measures, and we do <span class="k">not</span> bypass paid access.</li>
+        <li>Built-in media rules are <span class="k">protocol-level only</span> (HLS/DASH/direct media). Site-specific adapters are <span class="k">user-supplied</span>.</li>
+        <li>Copying a detected resource link merely exposes a URL your browser already fetched — using it is your decision.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Roadmap</h2>
+    <p class="sub" style="font-size:16px">
+      The cross-device experience is <span class="k">in planning</span>, including the
+      <a href="#android">Android companion</a>.
+      There is no date to announce; follow the repository to hear when it lands.
+    </p>
+    <div class="row">
+      <a class="btn" href="#">GitHub repository</a>
+      <a class="btn" href="#">Report an issue</a>
+    </div>
+  </div>
+</section>
+
+<section id="license">
+  <div class="wrap">
+    <h2>License</h2>
+    <p class="sub" style="font-size:16px">
+      Yutide is <span class="k">proprietary</span> — not open source. Free for personal, learning, research, evaluation and non-profit use. Using the protocol-parsing features in a company or other organisation requires a commercial licence; every other feature is unrestricted.
+      See <code>LICENSE</code>, <code>PRIVACY.md</code> and <code>THIRD_PARTY_NOTICES.md</code> (all shipped with the app and openable offline from the About page); protocol-definition provenance is in <code>docs/PROTOCOL_PROVENANCE.md</code>.
+    </p>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <h2>Pricing</h2>
+    <p class="sub" style="font-size:16px">
+      <span class="k">No feature is withheld.</span> Personal and other non-commercial use is free; the in-app
+      promotion slot can be removed with an optional subscription shown inside the app. Commercial use of the
+      protocol-parsing features requires a commercial licence — the exact scope is in the
+      <a href="#license">License</a> section above. Follow the repository for updates.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="zh">
+      <strong>中文简介（雨霆 / Yutide）：</strong>面向工程与运维的专业网络工具箱，也能日常使用 —— 58 份协议定义与协议族整族解析、
+      跨设备传文件（大文件直传 + 海量小文件聚合 + 断点续传）、下载（HTTP/BT/磁力，失败显示人话原因）、一键网络体检。
+      隐私优先：默认无遥测、不接第三方广告 SDK、诊断默认关闭且零外发。Windows 与 WSL2 Ubuntu 同一套工具，
+      WSL 下的能力边界已在上面表格逐条写清。
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
