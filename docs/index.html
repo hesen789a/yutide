@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Yutide — professional network toolbox, clean enough for every day</title>
 <meta name="description" content="Yutide: a professional network toolbox for engineers — protocol engine with 58 protocols and protocol families, transfer engine, downloads, and a one-click network checkup. Windows and WSL2 Ubuntu. Privacy by design: no telemetry, no third-party ad SDKs.">
 <!--
-  Landing page draft. Static, self-contained, zero dependencies (no CDN, no external fonts) —
+  Landing page. Static, self-contained, zero dependencies (no CDN, no external fonts, no build) —
   consistent with the product's privacy stance and trivial to host on GitHub Pages.
+
+  Bilingual: the whole page exists twice below (`.page[data-lang="en"]` then `.page[data-lang="zh"]`).
+  **English is the default**: the static HTML serves English, and the Chinese half ships with the
+  `hidden` attribute, so the page stays fully readable with JavaScript disabled. The inline script at
+  the bottom only *switches* between the two halves and keeps `<html lang>`, `document.title` and the
+  four content anchors (`features` / `android` / `license` / `pricing`) in sync.
+
   TODO before publishing: replace the download hrefs (#) with the real Release asset URLs,
   and add the real screenshots/GIFs where marked.
 -->
@@ -56,12 +63,33 @@
   .shot{border:1px dashed var(--line);border-radius:var(--radius);padding:36px 20px;text-align:center;
     color:var(--muted);font-size:14px;background:var(--panel2)}
   footer{padding:36px 0 60px;color:var(--muted);font-size:14px}
+  footer p{margin:0 0 6px}
   .pill{display:inline-block;padding:3px 9px;border:1px solid var(--line);border-radius:999px;
     font-size:12px;color:var(--muted);margin-left:8px}
-  .zh{margin-top:10px}
+  /* ── language switch + bilingual halves ───────────────────────────── */
+  .page[hidden]{display:none}
+  .langbar{border-bottom:1px solid var(--line);padding:10px 0}
+  .langbar .wrap{display:flex;justify-content:flex-end;align-items:center;gap:6px}
+  .lang-btn{font:inherit;font-size:13px;padding:4px 11px;border-radius:999px;cursor:pointer;
+    background:none;border:1px solid transparent;color:var(--muted)}
+  .lang-btn:hover{color:var(--fg)}
+  .lang-btn[aria-pressed="true"]{color:var(--fg);background:var(--panel);border-color:var(--line);font-weight:600}
+  @media (max-width:520px){ h1{font-size:30px} .langbar .wrap{justify-content:center} }
 </style>
 </head>
 <body>
+
+<!-- ── 语言切换 / language switch（两种语言下都可见；窄屏居中）──────────── -->
+<div class="langbar">
+  <div class="wrap">
+    <button type="button" class="lang-btn" data-set-lang="en" aria-pressed="true">EN</button>
+    <span>/</span>
+    <button type="button" class="lang-btn" data-set-lang="zh" aria-pressed="false">中文</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════ ENGLISH (default) ══════════════════════════ -->
+<div class="page" data-lang="en">
 
 <header>
   <div class="wrap">
@@ -81,7 +109,7 @@
   </div>
 </header>
 
-<section id="features">
+<section id="features" data-anchor="features" data-lang="en">
   <div class="wrap">
     <h2>Three things we do better</h2>
     <div class="grid">
@@ -117,6 +145,17 @@
   </div>
 </section>
 
+<section id="android" data-anchor="android" data-lang="en">
+  <div class="wrap">
+    <h2>Android</h2>
+    <p class="sub" style="font-size:16px">
+      The cross-device experience — including a mobile companion — is <span class="k">in planning</span>.
+      There is <span class="k">no date to announce yet</span>, and no Android build is downloadable today;
+      follow the repository to hear when it lands.
+    </p>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <h2>What's inside</h2>
@@ -148,17 +187,6 @@
       </tbody>
     </table>
     <p class="note">We publish this table on purpose: the Linux build is a debugging / server-side toolbox, not a 1:1 copy of the Windows experience.</p>
-  </div>
-</section>
-
-<section id="android">
-  <div class="wrap">
-    <h2>Android</h2>
-    <p class="sub" style="font-size:16px">
-      The cross-device experience — including a mobile companion — is <span class="k">in planning</span>.
-      There is <span class="k">no date to announce yet</span>, and no Android build is downloadable today;
-      follow the repository to hear when it lands.
-    </p>
   </div>
 </section>
 
@@ -208,38 +236,269 @@
   </div>
 </section>
 
-<section id="license">
+<section id="license" data-anchor="license" data-lang="en">
   <div class="wrap">
     <h2>License</h2>
     <p class="sub" style="font-size:16px">
-      Yutide is <span class="k">proprietary</span> — not open source. Free for personal, learning, research, evaluation and non-profit use. Using the protocol-parsing features in a company or other organisation requires a commercial licence; every other feature is unrestricted.
+      Yutide is <span class="k">proprietary software</span> — no source-code licence is granted.
+      Free for personal, learning, research, evaluation and non-profit use. Using the protocol-parsing features in a company or other organisation requires a commercial licence; every other feature is unrestricted.
       See <code>LICENSE</code>, <code>PRIVACY.md</code> and <code>THIRD_PARTY_NOTICES.md</code> (all shipped with the app and openable offline from the About page); protocol-definition provenance is in <code>docs/PROTOCOL_PROVENANCE.md</code>.
     </p>
   </div>
 </section>
 
-<section id="pricing">
+<section id="pricing" data-anchor="pricing" data-lang="en">
   <div class="wrap">
     <h2>Pricing</h2>
     <p class="sub" style="font-size:16px">
-      <span class="k">No feature is withheld.</span> Personal and other non-commercial use is free; the in-app
-      promotion slot can be removed with an optional subscription shown inside the app. Commercial use of the
-      protocol-parsing features requires a commercial licence — the exact scope is in the
-      <a href="#license">License</a> section above. Follow the repository for updates.
+      <span class="k">No feature is withheld.</span> Personal and other non-commercial use is free.
+      Commercial use of the protocol-parsing features requires a commercial licence — the exact scope is in
+      the <a href="#license">License</a> section above. Follow the repository for updates.
     </p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <p class="zh">
-      <strong>中文简介（雨霆 / Yutide）：</strong>面向工程与运维的专业网络工具箱，也能日常使用 —— 58 份协议定义与协议族整族解析、
-      跨设备传文件（大文件直传 + 海量小文件聚合 + 断点续传）、下载（HTTP/BT/磁力，失败显示人话原因）、一键网络体检。
-      隐私优先：默认无遥测、不接第三方广告 SDK、诊断默认关闭且零外发。Windows 与 WSL2 Ubuntu 同一套工具，
-      WSL 下的能力边界已在上面表格逐条写清。
-    </p>
+    <p><strong>Yutide</strong> — a professional network toolbox for engineers and operators, one toolbox for Windows and WSL2 Ubuntu.</p>
+    <p>© 2026 Yutide. All rights reserved.</p>
   </div>
 </footer>
+
+</div>
+
+<!-- ═══════════════ 中文（静态默认隐藏，切到中文才显示；禁用 JS 时读英文）═════════ -->
+<div class="page" data-lang="zh" hidden>
+
+<header>
+  <div class="wrap">
+    <div class="logo"><span class="dot"></span> Yutide（雨霆）</div>
+    <h1>专业网络工具箱 ——<br>日常也好用。</h1>
+    <p class="sub">
+      58 份协议定义与协议族整族解析，抓包、串口 / MQTT 与 SSH / Telnet / ADB ——
+      外加跨设备传文件、下载与一键网络体检。Windows 与 WSL2 Ubuntu 同一套工具。
+      <span class="pill">隐私优先</span>
+    </p>
+    <div class="row">
+      <a class="btn primary" href="#">下载 Windows 版 <small>setup.exe</small></a>
+      <a class="btn" href="#">下载 WSL2 Ubuntu 版 <small>.deb</small></a>
+      <a class="btn" href="#">校验 <small>SHA256SUMS</small></a>
+    </div>
+    <p class="note">Windows 上抓包需要管理员权限。WSL2 版定位为调试 / 服务器向工具箱 —— 能力边界见下方对照表。</p>
+  </div>
+</header>
+
+<section id="features" data-anchor="features" data-lang="zh">
+  <div class="wrap">
+    <h2>我们做得更好的三件事</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>1 · 一个不会在规则上撒谎的协议引擎</h3>
+        <ul>
+          <li><span class="k">内置 58 份协议</span>，覆盖工业、电信、物联网与互联网协议族</li>
+          <li><span class="k">协议族：</span>选一次 <code>szl4</code>，该协议的全部报文类型都能解析 —— 逐成员分派，各自遵循自己的分帧规则</li>
+          <li><span class="k">分帧：</span>定长、长度前缀（"长度是否含自身 / 头部 / 尾部"语义明确）与结束符分帧，另有最大帧长护栏</li>
+          <li><span class="k">夹具自证的闸门：</span>每条规则都必须证明自己能恰好解出一整帧且无残留；证明不了的规则不发布。</li>
+          <li><span class="k">绝不静默丢数据：</span>遇到垃圾数据后重新同步、半帧先等待、无法识别的帧原样交给你</li>
+          <li><span class="k">规则是文件，不是硬编码逻辑</span> —— 支持你自己的规则文件夹</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>2 · 为"难啃的情况"造的传输引擎</h3>
+        <ul>
+          <li>大文件，直接传输</li>
+          <li>海量小文件，聚合传输</li>
+          <li>中断的传输，可续传</li>
+          <li>识别到的媒体链接，复制后随你用别的工具下载 —— 我们不强制用自家的</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>3 · 主机与 WSL 用同一件工具</h3>
+        <ul>
+          <li>Windows 与 WSL2 Ubuntu 里是同一个应用</li>
+          <li>主机侧与 WSL 侧的调试共用一件工具箱</li>
+          <li>WSL 与本机体验的差异逐条写明 —— 不给你"惊喜"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="android" data-anchor="android" data-lang="zh">
+  <div class="wrap">
+    <h2>Android</h2>
+    <p class="sub" style="font-size:16px">
+      跨设备体验 —— 包括移动端伴侣应用 —— 目前<span class="k">仍在规划中</span>。
+      <span class="k">没有可公布的日期</span>，今天也没有可下载的 Android 版本；请关注仓库，上线时会在这里说明。
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>里面有什么</h2>
+    <div class="grid">
+      <div class="card"><h3>网络工具</h3><p>TCP 客户端/服务端、UDP、MQTT、串口；协议实时解析；抓包。</p></div>
+      <div class="card"><h3>远程</h3><p>SSH、Telnet、ADB、FTP/SFTP 文件传输。</p></div>
+      <div class="card"><h3>下载</h3><p>HTTP、BitTorrent 与磁力；断点续传；有界重试；失败原因用人话写清。</p></div>
+      <div class="card"><h3>设备互联</h3><p>设备之间的共享、群组与消息。</p></div>
+      <div class="card"><h3>媒体</h3><p>本地播放与媒体中心。</p></div>
+      <div class="card"><h3>浏览器与录制</h3><p>内置浏览器并识别网页资源；Windows 上支持带声音的屏幕录制。</p></div>
+    </div>
+    <div class="shot" style="margin-top:16px">截图 / 短视频占位 —— 按 1280×800（深色界面）拍摄，上面每个区域各一张。</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>平台支持</h2>
+    <table>
+      <thead><tr><th>能力</th><th>Windows</th><th>WSL2 Ubuntu</th></tr></thead>
+      <tbody>
+        <tr><td>核心工具箱、传输、下载、协议解析</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+        <tr><td>图形界面</td><td class="yes">✅ 原生</td><td class="partial">需要 WSLg（Windows 11）</td></tr>
+        <tr><td>抓包</td><td class="yes">✅ 经 Npcap —— 可见主机/局域网流量</td><td class="partial">⚠ 只能看到 WSL 自身的虚拟网卡</td></tr>
+        <tr><td>串口</td><td class="yes">✅ COM 口</td><td class="partial">⚠ 需要 <code>usbipd-win</code></td></tr>
+        <tr><td>录屏音频</td><td class="yes">✅</td><td class="no">不可用</td></tr>
+        <tr><td>硬件视频解码</td><td class="yes">✅</td><td class="partial">取决于 <code>/dev/dri</code>；否则回落到软件解码</td></tr>
+        <tr><td>权限</td><td class="partial">抓包需要管理员</td><td class="partial">AF_PACKET 需要 root / <code>cap_net_raw</code></td></tr>
+      </tbody>
+    </table>
+    <p class="note">这张表是我们主动公布的：Linux 版是调试 / 服务器向工具箱，不是 Windows 体验的 1:1 复制。</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>隐私</h2>
+    <div class="strip">
+      <ul>
+        <li><span class="k">默认无遥测。</span></li>
+        <li><span class="k">不接第三方广告 SDK</span> —— 应用内的推广位是我们自己的内容。</li>
+        <li><span class="k">诊断默认关闭</span>，关闭时既不上传、也不写任何东西。</li>
+        <li>远程请求（广告清单、更新检查）只在<span class="k">你显式配置后</span>才会发生。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>合规使用</h2>
+    <p class="sub" style="font-size:16px">
+      Yutide 是通用网络工具。<span class="k">请只下载你有权下载的内容</span>，
+      并遵守你所使用站点的条款与你所在地区的法律。
+    </p>
+    <div class="strip" style="margin-top:14px">
+      <ul>
+        <li>我们<span class="k">不</span>绕过 DRM 或技术保护措施，也<span class="k">不</span>绕过付费访问。</li>
+        <li>内置媒体规则只到<span class="k">协议层</span>（HLS/DASH/直链媒体）；站点专属适配由<span class="k">用户自行提供</span>。</li>
+        <li>复制一个识别到的资源链接，只是把浏览器本来就取到的 URL 露出来 —— 用不用由你决定。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>路线图</h2>
+    <p class="sub" style="font-size:16px">
+      跨设备体验正在<span class="k">规划中</span>，包括
+      <a href="#android">Android 伴侣应用</a>。
+      没有可公布的日期；关注仓库即可第一时间知道。
+    </p>
+    <div class="row">
+      <a class="btn" href="#">GitHub 仓库</a>
+      <a class="btn" href="#">报告问题</a>
+    </div>
+  </div>
+</section>
+
+<section id="license" data-anchor="license" data-lang="zh">
+  <div class="wrap">
+    <h2>许可</h2>
+    <p class="sub" style="font-size:16px">
+      Yutide 是<span class="k">专有软件</span>，不授予源代码许可。
+      个人、学习、研究、评估与非营利使用免费；在公司或其他组织中商业性使用「协议解析功能」需取得商业授权，其余功能不受限制。
+      详见 <code>LICENSE</code>、<code>PRIVACY.md</code> 与 <code>THIRD_PARTY_NOTICES.md</code>
+      （均随包分发，可在「关于」页离线打开）；协议定义的来源见 <code>docs/PROTOCOL_PROVENANCE.md</code>。
+    </p>
+  </div>
+</section>
+
+<section id="pricing" data-anchor="pricing" data-lang="zh">
+  <div class="wrap">
+    <h2>价格</h2>
+    <p class="sub" style="font-size:16px">
+      <span class="k">所有功能都不设门槛。</span>个人与非商业使用免费。
+      商业性使用「协议解析功能」需取得商业授权 —— 具体范围见上方<a href="#license">许可</a>一节。
+      后续进展请关注仓库。
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Yutide（雨霆）</strong> —— 面向工程与运维的专业网络工具箱，Windows 与 WSL2 Ubuntu 同一套工具。</p>
+    <p>© 2026 Yutide。保留所有权利。</p>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  var TITLES = {
+    en: 'Yutide — professional network toolbox, clean enough for every day',
+    zh: 'Yutide（雨霆）— 专业网络工具箱，日常也好用'
+  };
+
+  function applyLang(lang) {
+    if (lang !== 'zh') { lang = 'en'; }
+    var root = document.documentElement;
+    root.setAttribute('data-lang', lang);
+    root.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+    document.title = TITLES[lang];
+
+    // 两半只显示一个（英文半在静态 HTML 里默认可见）
+    var pages = document.querySelectorAll('.page');
+    for (var i = 0; i < pages.length; i++) {
+      pages[i].hidden = pages[i].getAttribute('data-lang') !== lang;
+    }
+
+    // 内容锚点：静态 HTML 里中英各一份（禁用 JS 时英文那份也带锚点）；
+    // 运行期只在**当前显示**的那一半上保留 id ⇒ 两种语言下 #features / #android / #license / #pricing 都可用。
+    var anchors = document.querySelectorAll('[data-anchor]');
+    for (var j = 0; j < anchors.length; j++) {
+      var el = anchors[j];
+      if (el.getAttribute('data-lang') === lang) {
+        el.id = el.getAttribute('data-anchor');
+      } else {
+        el.removeAttribute('id');
+      }
+    }
+
+    var btns = document.querySelectorAll('[data-set-lang]');
+    for (var k = 0; k < btns.length; k++) {
+      btns[k].setAttribute('aria-pressed',
+        btns[k].getAttribute('data-set-lang') === lang ? 'true' : 'false');
+    }
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem('yutide-lang'); } catch (e) { saved = null; }
+  applyLang(saved === 'zh' ? 'zh' : 'en');   // 默认英文；只有显式选过中文才切
+
+  var btns = document.querySelectorAll('[data-set-lang]');
+  for (var b = 0; b < btns.length; b++) {
+    btns[b].addEventListener('click', function () {
+      var lang = this.getAttribute('data-set-lang');
+      applyLang(lang);
+      try { localStorage.setItem('yutide-lang', lang === 'zh' ? 'zh' : 'en'); } catch (e) {}
+    });
+  }
+})();
+</script>
 
 </body>
 </html>
