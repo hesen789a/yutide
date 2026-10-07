@@ -15,7 +15,7 @@
   the bottom only *switches* between the two halves and keeps `<html lang>`, `document.title` and the
   four content anchors (`features` / `android` / `license` / `pricing`) in sync.
 
-  Release links point at the v1.0.1 Release (update them on each release);
+  Release links point at the v1.0.2 Release (update them on each release);
   the screenshots/GIFs where marked are still placeholders.
 -->
 <style>
@@ -101,19 +101,28 @@
       <span class="pill">privacy by design</span>
     </p>
     <div class="row">
-      <a class="btn primary" href="https://github.com/hesen789a/yutide/releases/download/v1.0.1/Yutide_1.0.1_x64-setup.exe">Download for Windows <small>setup.exe</small></a>
-      <a class="btn" href="https://github.com/hesen789a/yutide/releases/download/v1.0.1/Yutide_1.0.1_amd64.deb">Download for WSL2 Ubuntu <small>.deb</small></a>
-      <a class="btn" href="https://github.com/hesen789a/yutide/releases/download/v1.0.1/yutide-1.0.1-linux-x86_64.tar.gz">Linux portable <small>tar.gz</small></a>
-      <a class="btn" href="https://github.com/hesen789a/yutide/releases/download/v1.0.1/SHA256SUMS">Verify <small>SHA256SUMS</small></a>
+      <a class="btn primary" href="https://github.com/hesen789a/yutide/releases/download/v1.0.2/Yutide_1.0.2_x64-setup.exe">Download for Windows <small>setup.exe</small></a>
+      <a class="btn" href="https://github.com/hesen789a/yutide/releases/download/v1.0.2/Yutide_1.0.2_amd64.deb">Download for WSL2 Ubuntu <small>.deb</small></a>
+      <a class="btn" href="https://github.com/hesen789a/yutide/releases/download/v1.0.2/yutide-1.0.2-linux-x86_64.tar.gz">Linux portable <small>tar.gz</small></a>
+      <a class="btn" href="https://github.com/hesen789a/yutide/releases/download/v1.0.2/SHA256SUMS">Verify <small>SHA256SUMS</small></a>
     </div>
     <div class="row">
       <a class="btn" href="https://github.com/hesen789a/yutide/blob/main/docs/PROTOCOL_AUTHORING.md">Write your own protocol JSON <small>guide</small></a>
     </div>
-    <!-- TODO(录完再打开)：docs/landing/media/protocol-demo.mp4（≤5MB、30–45s、1080p、可无音轨）
-         录制脚本见 docs/PROTOCOL_DEMO_SCRIPT.md；poster 用 protocol-demo-poster.png
-    <video controls preload="none" width="720" poster="media/protocol-demo-poster.png"></video>
-    -->
-    <p class="sub">30-second demo: paste a frame → pick a protocol → read the field table → swap in your own JSON</p>
+    <!-- 演示视频（**英文界面**录制）：media/protocol-demo-en.mp4（22.3 s · H.264 · 无音轨 · 4.1 MB，未转码）
+         中文界面那份在下方中文分区：media/protocol-demo.mp4（18.4 s · 3.65 MB） -->
+    <video
+      class="demo-video"
+      controls
+      playsinline
+      preload="metadata"
+      width="720"
+      style="max-width:100%;height:auto"
+      poster="media/protocol-demo-poster-en.jpg"
+      src="media/protocol-demo-en.mp4"
+      aria-label="Protocol engine demo (English UI, 22 seconds, no audio)"
+    ></video>
+    <p class="sub">22-second demo (English UI, silent): paste a frame → pick a protocol → read the field table → swap in your own JSON</p>
     <p class="note">Requires admin rights for packet capture on Windows. WSL2 build is intended as a debugging / server-side toolbox — see the capability matrix below.</p>
   </div>
 </header>
@@ -289,19 +298,28 @@
       <span class="pill">隐私优先</span>
     </p>
     <div class="row">
-      <a class="btn primary" href="https://github.com/hesen789a/yutide/releases/download/v1.0.1/Yutide_1.0.1_x64-setup.exe">下载 Windows 版 <small>setup.exe</small></a>
-      <a class="btn" href="https://github.com/hesen789a/yutide/releases/download/v1.0.1/Yutide_1.0.1_amd64.deb">下载 WSL2 Ubuntu 版 <small>.deb</small></a>
-      <a class="btn" href="https://github.com/hesen789a/yutide/releases/download/v1.0.1/yutide-1.0.1-linux-x86_64.tar.gz">Linux 便携版 <small>tar.gz</small></a>
-      <a class="btn" href="https://github.com/hesen789a/yutide/releases/download/v1.0.1/SHA256SUMS">校验 <small>SHA256SUMS</small></a>
+      <a class="btn primary" href="https://github.com/hesen789a/yutide/releases/download/v1.0.2/Yutide_1.0.2_x64-setup.exe">下载 Windows 版 <small>setup.exe</small></a>
+      <a class="btn" href="https://github.com/hesen789a/yutide/releases/download/v1.0.2/Yutide_1.0.2_amd64.deb">下载 WSL2 Ubuntu 版 <small>.deb</small></a>
+      <a class="btn" href="https://github.com/hesen789a/yutide/releases/download/v1.0.2/yutide-1.0.2-linux-x86_64.tar.gz">Linux 便携版 <small>tar.gz</small></a>
+      <a class="btn" href="https://github.com/hesen789a/yutide/releases/download/v1.0.2/SHA256SUMS">校验 <small>SHA256SUMS</small></a>
     </div>
     <div class="row">
       <a class="btn" href="https://github.com/hesen789a/yutide/blob/main/docs/PROTOCOL_AUTHORING.md">自己写协议 JSON <small>教程</small></a>
     </div>
-    <!-- TODO(录完再打开)：docs/landing/media/protocol-demo.mp4（≤5MB、30–45s、1080p、可无音轨）
-         录制脚本见 docs/PROTOCOL_DEMO_SCRIPT.md；poster 用 protocol-demo-poster.png
-    <video controls preload="none" width="720" poster="media/protocol-demo-poster.png"></video>
-    -->
-    <p class="sub">30 秒演示：粘贴一帧 → 选协议 → 看字段表 → 换成你自己写的 JSON</p>
+    <!-- 演示视频（**中文界面**录制）：media/protocol-demo.mp4（18.4 s · H.264 · 无音轨 · 3.65 MB，未转码）
+         英文界面那份在英文分区：media/protocol-demo-en.mp4（22.3 s · 4.1 MB） -->
+    <video
+      class="demo-video"
+      controls
+      playsinline
+      preload="metadata"
+      width="720"
+      style="max-width:100%;height:auto"
+      poster="media/protocol-demo-poster.jpg"
+      src="media/protocol-demo.mp4"
+      aria-label="协议引擎演示（中文界面，18 秒，无音轨）"
+    ></video>
+    <p class="sub">18 秒中文演示（无音轨）：粘贴一帧 → 选协议 → 看字段表 → 换成你自己写的 JSON</p>
     <p class="note">Windows 上抓包需要管理员权限。WSL2 版定位为调试 / 服务器向工具箱 —— 能力边界见下方对照表。</p>
   </div>
 </header>
